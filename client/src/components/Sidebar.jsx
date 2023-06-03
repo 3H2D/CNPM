@@ -18,22 +18,27 @@ import {
 import { TDP_NAME } from "../const";
 
 function Sidebar(props) {
-  const handleHoKhauClick = () => {
-    props.click("hokhau");
-  };
   return (
     <Card className="top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-150">
       <Typography variant="h5" className="text-blue-500">
         {TDP_NAME}
       </Typography>
       <List>
-        <ListItem onClick={handleHoKhauClick}>
+        <ListItem
+          onClick={() => {
+            props.click("hokhau");
+          }}
+        >
           <ListItemPrefix>
             <UserIcon className="h-5 w-5" />
           </ListItemPrefix>
           Hộ khẩu
         </ListItem>
-        <ListItem>
+        <ListItem
+          onClick={() => {
+            props.click("phananh");
+          }}
+        >
           <ListItemPrefix>
             <BellAlertIcon className="h-5 w-5" />
           </ListItemPrefix>
@@ -67,7 +72,11 @@ function Sidebar(props) {
           </ListItemPrefix>
           Cài đặt
         </ListItem>
-        <ListItem>
+        <ListItem
+          onClick={() => {
+            return (window.location.href = "/login");
+          }}
+        >
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>

@@ -64,7 +64,7 @@ function LogIn() {
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
         </div>
-        <Button className="mt-6" type="submit">
+        <Button className="mt-6" type="submit" fullWidth>
           Đăng nhập
         </Button>
       </form>

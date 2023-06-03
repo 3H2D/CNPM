@@ -7,17 +7,12 @@ const HoKhau = db.hoKhau;
 const addHoKhau = async(req, res) => {
     let info = {
         MaHo: req.body.MaHo,
-        IDChuHo: req.body.IDChuHo,
+        IdChuHo: req.body.IdChuHo,
         SoThanhVien: req.body.SoThanhVien,
         DiaChi: req.body.DiaChi
     }
 
     console.log(info);
-
-    if (HoKhau === undefined) {
-        res.status(500).send("HoKhau object is undefined");
-        return;
-    }
 
     try {
         const hoKhau = await HoKhau.create(info);

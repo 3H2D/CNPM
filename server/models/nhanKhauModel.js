@@ -1,8 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
 
     const NhanKhau = sequelize.define("nhan_khau", {
-        ID: {
+        id: {
             type: DataTypes.INTEGER,
+            autoIncrement: true,
             allowNull: false,
             primaryKey: true
         },

@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             primaryKey: true
         },
-        IDChuHo: {
+        IdChuHo: {
             type: DataTypes.INTEGER,
             allowNull: false
         },

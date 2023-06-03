@@ -1,22 +1,8 @@
 const db = require("../models");
-const session = require('express-session');
 
 // Create main models
 const HoKhau = db.hoKhau;
-const User = db.user;
 
-const register = async (req, res) => {
-    let info = {
-        username: req.body.username,
-        password: req.body.password,
-        role: req.body.role
-    }
-
-    const newUser = await new User(info)
-    newUser.save()
-
-    res.redirect('/login')
-}
 
 const addHoKhau = async(req, res) => {
     let info = {
@@ -44,8 +30,31 @@ const addHoKhau = async(req, res) => {
     
 }
 
+const getAllHoKhau = async (req, res) => {
+    let hoKhau = await HoKhau.findAll({})
+    res.status(200).send(hoKhau)
+}
+
+const updateHoKhau = async (req, res) => {
+    let id = req.params.id
+
+    const hoKhau = await HoKhau.update(req.body, {where: {MaHo: id}})
+    res.status(200).send(hoKhau)
+}
+
+const deleteHoKhau = async (req, res) => {
+
+    let id = req.params.id
+    
+    await HoKhau.destroy({ where: { maHo: id }} )
+
+    res.status(200).json({success: true})
+
+}
 
 module.exports = {
-    register,
-    addHoKhau
+    addHoKhau,
+    getAllHoKhau,
+    updateHoKhau,
+    deleteHoKhau
 }

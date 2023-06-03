@@ -17,7 +17,7 @@ function LogIn() {
   } = useForm();
 
   const [values, setValues] = useState({
-    account: "",
+    username: "",
     password: "",
   });
 
@@ -25,12 +25,16 @@ function LogIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // navigate to "/"
-    navigate("/");
-    // axios.post("http://localhost:8000/login", values).then((res) => {
-    //   Navigate("/");
-    // });
-    console.log(values);
+    axios
+      .post("http://10.14.2.112:8080/login", {
+        username: values.username,
+        password: values.password,
+      })
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -53,8 +57,8 @@ function LogIn() {
           <Input
             size="lg"
             label="Tài khoản"
-            name="account"
-            onChange={(e) => setValues({ ...values, account: e.target.value })}
+            name="username"
+            onChange={(e) => setValues({ ...values, username: e.target.value })}
           />
           <Input
             type="password"

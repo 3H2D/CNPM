@@ -14,19 +14,26 @@ import {
   InboxIcon,
   PowerIcon,
   BellAlertIcon,
+  BuildingOfficeIcon,
 } from "@heroicons/react/24/solid";
 import { TDP_NAME } from "../const";
 
 function Sidebar(props) {
   return (
     <Card className="top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-150">
-      <Typography variant="h5" className="text-blue-500">
-        {TDP_NAME}
-      </Typography>
+      <div className="mb-2 flex items-center gap-4 p-4">
+        <ListItemPrefix>
+          <BuildingOfficeIcon className="h-9 w-9" />
+        </ListItemPrefix>
+        <Typography variant="h5" color="blue-gray">
+          {TDP_NAME}
+        </Typography>
+      </div>
       <List>
         <ListItem
           onClick={() => {
             props.click("hokhau");
+            return (window.location.href = "/hokhau");
           }}
         >
           <ListItemPrefix>
@@ -37,6 +44,7 @@ function Sidebar(props) {
         <ListItem
           onClick={() => {
             props.click("phananh");
+            return (window.location.href = "/phananh");
           }}
         >
           <ListItemPrefix>

@@ -35,6 +35,13 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 db.user = require('./userModel.js')(sequelize, DataTypes)
+db.feedback = require('./feedbackModel.js')(sequelize, DataTypes)
+db.feedbackResponse = require('./feedbackResponseModel.js')(sequelize, DataTypes)
+db.household = require('./householdModel.js')(sequelize, DataTypes)
+db.person = require('./personModel.js')(sequelize, DataTypes)
+db.temporaryAbsence = require('./temporaryAbsenceModel.js')(sequelize, DataTypes)
+db.temporaryResidence = require('./temporaryResidenceModel.js')(sequelize, DataTypes)
+
 db.quanHe = require('./quanHeModel.js')(sequelize, DataTypes)
 db.nhanKhau = require('./nhanKhauModel.js')(sequelize, DataTypes)
 db.hoKhau = require('./hoKhauModel.js')(sequelize, DataTypes)

@@ -46,6 +46,7 @@ Backend listen on port `8080`
 
 ```bash
 cd client
+yarn install
 yarn dev
 ```
 Open browser and go to `localhost:5173`

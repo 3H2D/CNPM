@@ -12,7 +12,7 @@ function HoKhau() {
   };
   return (
     <div>
-      <MyBreadcrumbs />
+      <h1 className="text-3xl font-semibold text-blue-gray-700">Hộ khẩu</h1>
       {isAddMemberClick ? (
         <ThemHoKhau />
       ) : (

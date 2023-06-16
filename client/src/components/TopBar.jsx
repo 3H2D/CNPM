@@ -27,7 +27,7 @@ export default function TopBar({ onAddMemberClick }) {
         <div className="w-full md:w-72">
           <Input
             icon={<MagnifyingGlassIcon className="h-5 w-5" />}
-            label="Search"
+            label="Tìm kiếm"
           />
         </div>
         <div className="flex shrink-0 flex-col gap-2 sm:flex-row">

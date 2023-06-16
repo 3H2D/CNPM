@@ -6,15 +6,9 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true
         },
-        FeedbackID: {
-            type: DataTypes.INTEGER,
-        },
         ResponseContent: {
             type: DataTypes.TEXT
         },
-        ResponderID: {
-            type: DataTypes.INT
-        }
     
     })
 

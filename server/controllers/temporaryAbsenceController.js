@@ -4,7 +4,7 @@ const TemporaryAbsence = db.temporaryAbsence
 
 const addTemporaryAbsence = async(req, res) => {
     let info = {
-        PersonID: req.body.PersonID,
+        personId: req.body.personId,
         StartDate: req.body.StartDate,
         EndDate: req.body.EndDate,
         Destination: req.body.Destination,

@@ -42,15 +42,30 @@ db.person = require('./personModel.js')(sequelize, DataTypes)
 db.temporaryAbsence = require('./temporaryAbsenceModel.js')(sequelize, DataTypes)
 db.temporaryResidence = require('./temporaryResidenceModel.js')(sequelize, DataTypes)
 
-db.quanHe = require('./quanHeModel.js')(sequelize, DataTypes)
-db.nhanKhau = require('./nhanKhauModel.js')(sequelize, DataTypes)
-db.hoKhau = require('./hoKhauModel.js')(sequelize, DataTypes)
-
 db.sequelize.sync({ force: false })
 .then(() => {
     console.log('yes re-sync done!')
 })
 
+db.household.hasMany(db.person);
+db.person.belongsTo(db.household);
+
+db.person.hasMany(db.temporaryAbsence);
+db.temporaryAbsence.belongsTo(db.person);
+
+db.person.hasMany(db.temporaryResidence);
+db.temporaryResidence.belongsTo(db.person)
+
+db.person.hasMany(db.feedback);
+db.feedback.belongsTo(db.person);
+
+db.user.hasMany(db.feedbackResponse);
+db.feedbackResponse.belongsTo(db.user, {
+    foreignKey: "ResponderId"
+});
+
+db.feedback.hasMany(db.feedbackResponse);
+db.feedbackResponse.belongsTo(db.feedback);
 
 module.exports = db
 

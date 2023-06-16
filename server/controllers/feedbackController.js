@@ -4,7 +4,7 @@ const Feedback = db.feedback
 
 const addFeedback = async(req, res) => {
     let info = {
-        PersonID: req.body.PersonID,
+        personId: req.body.personId,
         Content: req.body.Content,
         Category: req.body.Category,
         Status: req.body.Status

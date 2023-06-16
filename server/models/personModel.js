@@ -29,10 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         RelationshipWithHouseholder: {
             type: DataTypes.STRING
-        },
-        HouseholdID: {
-            type: DataTypes.INTEGER,
-        },
+        }
     
     })
 

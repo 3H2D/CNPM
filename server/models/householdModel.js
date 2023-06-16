@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
         Location: {
             type: DataTypes.TEXT
         },
-        HouseholdID: {
-            type: DataTypes.INTEGER,
+        HouseholderId: {
+            type: DataTypes.INTEGER
         },
     
     })

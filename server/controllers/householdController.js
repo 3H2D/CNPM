@@ -6,7 +6,8 @@ const addHousehold = async(req, res) => {
     let info = {
         HouseholdNumber: req.body.HouseholdNumber,
         Location: req.body.Location,
-        HouseholderID: req.body.HouseholderID,
+        HouseholderId: req.body.HouseholderId,
+        personId: req.body.personId
     }
 
     try {

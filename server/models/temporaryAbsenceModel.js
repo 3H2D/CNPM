@@ -6,9 +6,6 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true
         },
-        PersonID: {
-            type: DataTypes.INTEGER
-        },
         StartDate: {
             type: DataTypes.DATE,
         },

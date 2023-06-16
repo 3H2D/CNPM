@@ -4,9 +4,9 @@ const FeedbackResponse = db.feedbackResponse
 
 const addFeedbackResponse = async(req, res) => {
     let info = {
-        FeedbackID: req.body.FeedbackID,
+        feedbackId: req.body.feedbackId,
         ResponseContent: req.body.ResponseContent,
-        ResponderID: req.body.ResponderID,
+        ResponderId: req.body.ResponderId,
     }
 
     try {

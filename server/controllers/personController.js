@@ -12,7 +12,7 @@ const addPerson = async(req, res) => {
         PreviousResidencyAddress: req.body.PreviousResidencyAddress,
         IsHouseholder: req.body.IsHouseholder,
         RelationshipWithHouseholder: req.body.RelationshipWithHouseholder,
-        HouseholdID: req.body.HouseholdID
+        householdId: req.body.householdId
     }
 
     try {

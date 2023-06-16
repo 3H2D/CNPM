@@ -4,7 +4,7 @@ const TemporaryResidence = db.temporaryResidence
 
 const addTemporaryResidence = async(req, res) => {
     let info = {
-        PersonID: req.body.PersonID,
+        personId: req.body.personId,
         StartDate: req.body.StartDate,
         EndDate: req.body.EndDate,
         PreviousResidenceAddress: req.body.PreviousResidenceAddress,

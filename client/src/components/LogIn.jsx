@@ -10,6 +10,8 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
+const LOGIN_URL = "http://localhost:8080/login";
+
 function LogIn() {
   const {
     register,
@@ -26,7 +28,7 @@ function LogIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://10.14.2.112:8080/login", {
+      .post(LOGIN_URL, {
         username: values.username,
         password: values.password,
       })

@@ -19,6 +19,8 @@ function App() {
         ></Route>
         <Route path="/login" element={<LogIn />}></Route>
         <Route path="/hokhau/themnhankhau" element={<DashBoard redirect="themhokhau" />}></Route>
+        <Route path="/hokhau/edit/:id" element={<DashBoard redirect="editnhankhau" />}></Route>
+        <Route path="/hokhau/view/:id" element={<DashBoard redirect="viewnhankhau" />}></Route>
       </Routes>
     </BrowserRouter>
   );

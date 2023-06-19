@@ -1,5 +1,6 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
 
 const PERSON_URL = "http://localhost:8080/api/person";
 
@@ -9,6 +10,7 @@ const TABLE_HEAD = [
   "Ngày sinh",
   "Nơi sinh",
   "Quan hệ với chủ hộ",
+    "Action",
 ];
 
 const ITEMS_PER_PAGE = 6; // Number of items to display per page
@@ -136,6 +138,12 @@ export default function TableData() {
                       {RelationshipWithHouseholder}
                     </Typography>
                   </td>
+                  <Link to={`/hokhau/edit/`+ id}>
+                  <Button size="sm" className="bg-green-500 text-black m-2">Edit</Button>
+                  </Link>
+                  <Link to={`/hokhau/view/`+ id}>
+                  <Button size="sm" className="bg-yellow-400 text-black m-2">View</Button>
+                  </Link>
                 </tr>
               )
             )}

@@ -1,23 +1,30 @@
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
-import { useState } from "react";
+import {useState} from "react";
 import HoKhau from "./HoKhau";
 import PhanAnh from "./PhanAnh";
 import MyBreadcrumbs from "./BreadCrumb";
 import ThemHoKhau from "./ThemHoKhau";
+import EditNhanKhau from "./EditNhanKhau.jsx";
+import ViewNhanKhau from "./ViewNhanKhau.jsx";
 
-function DashBoard({ redirect }) {
+function DashBoard({redirect}) {
   const [selectedMenu, setSelectedMenu] = useState("");
 
   const renderContent = () => {
     switch (redirect) {
       case "hokhau":
-        return <HoKhau />;
+        return <HoKhau/>;
       case "phananh":
-        return <PhanAnh />;
+        return <PhanAnh/>;
       case "themhokhau":
-        return <ThemHoKhau />;
+        return <ThemHoKhau/>;
+      case "editnhankhau":
+        return <EditNhanKhau/>;
+      case "viewnhankhau":
+        return <ViewNhanKhau/>;
       // Add more cases for other menu options
+
       default:
         return null;
     }
@@ -27,7 +34,7 @@ function DashBoard({ redirect }) {
     <div className="flex flex-row-reverse gap-4">
       <div className="flex-1 p-4 m-4">{renderContent()}</div>
       <div className="flex-none">
-        <Sidebar click={setSelectedMenu} />
+        <Sidebar click={setSelectedMenu}/>
       </div>
     </div>
   );

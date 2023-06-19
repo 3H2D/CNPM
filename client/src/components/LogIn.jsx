@@ -1,7 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
+import {createContext, useContext, useState} from "react";
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import {
   Card,
   Input,
@@ -11,6 +11,7 @@ import {
 } from "@material-tailwind/react";
 
 const LOGIN_URL = "http://localhost:8080/login";
+var role = 0;
 
 function LogIn() {
   const {
@@ -33,7 +34,7 @@ function LogIn() {
         password: values.password,
       })
       .then((res) => {
-        console.log(res);
+        role = res.data.role;
         navigate("/");
       })
       .catch((error) => console.log(error));
@@ -79,3 +80,4 @@ function LogIn() {
 }
 
 export default LogIn;
+export const RoleContext = createContext(role);

@@ -18,7 +18,7 @@ function App() {
           element={<DashBoard redirect="phananh" />}
         ></Route>
         <Route path="/login" element={<LogIn />}></Route>
-        <Route path="/hokhau/themnhankhau" component={ThemHoKhau} />
+        <Route path="/hokhau/themnhankhau" element={<DashBoard redirect="themhokhau" />}></Route>
       </Routes>
     </BrowserRouter>
   );

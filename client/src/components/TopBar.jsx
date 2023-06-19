@@ -22,9 +22,15 @@ import {
 import { RoleContext} from "./LogIn.jsx";
 import {useContext} from "react";
 import {Link} from "react-router-dom";
+import {SearchContext} from "./SearchContext.jsx";
 
 export default function TopBar({ onAddMemberClick }) {
   const { role } = useContext(RoleContext);
+  const { setSearchQuery } = useContext(SearchContext);
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  }
   console.log(role);
   return (
         <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -33,6 +39,7 @@ export default function TopBar({ onAddMemberClick }) {
               <Input
                   icon={<MagnifyingGlassIcon className="h-5 w-5" />}
                   label="Tìm kiếm"
+                  onChange={handleSearch}
               />
             </div>
             <div className="flex shrink-0 flex-col gap-2 sm:flex-row">

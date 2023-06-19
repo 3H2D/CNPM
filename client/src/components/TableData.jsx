@@ -1,6 +1,7 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {SearchContext} from "./SearchContext.jsx";
 
 const PERSON_URL = "http://localhost:8080/api/person";
 
@@ -30,6 +31,12 @@ export default function TableData() {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const currentData = tableData.slice(startIndex, endIndex);
+
+  const { searchQuery } = useContext(SearchContext);
+
+  const filteredData = currentData.filter((item) =>
+    item.Name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   async function getPerson(url) {
     const response = await fetch(url);
@@ -80,7 +87,7 @@ export default function TableData() {
             </tr>
           </thead>
           <tbody>
-            {currentData.map(
+            {filteredData.map(
               (
                 {
                   id,
@@ -139,10 +146,10 @@ export default function TableData() {
                     </Typography>
                   </td>
                   <Link to={`/hokhau/edit/`+ id}>
-                  <Button size="sm" className="bg-green-500 text-black m-2">Edit</Button>
+                  <Button size="sm" className="bg-green-500 text-black m-2">Sửa</Button>
                   </Link>
                   <Link to={`/hokhau/view/`+ id}>
-                  <Button size="sm" className="bg-yellow-400 text-black m-2">View</Button>
+                  <Button size="sm" className="bg-yellow-400 text-black m-2">Xem</Button>
                   </Link>
                 </tr>
               )
@@ -159,7 +166,13 @@ export default function TableData() {
         >
           Trước
         </Button>
-        <div>{`Trang ${currentPage} trên ${totalPages}`}</div>
+          <Typography
+            variant="small"
+            color="blue-gray"
+            className="font-normal"
+          >
+            {`Trang ${currentPage} trên ${totalPages}`}
+          </Typography>
         <Button
           onClick={goToNextPage}
           disabled={currentPage === totalPages}

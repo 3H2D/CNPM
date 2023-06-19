@@ -3,6 +3,7 @@ import TopBar from "./TopBar";
 import MyBreadcrumbs from "./BreadCrumb";
 import { useState } from "react";
 import ThemHoKhau from "./ThemHoKhau";
+import {SearchProvider} from "./SearchContext.jsx";
 
 function HoKhau() {
   const [isAddMemberClick, setAddMemberClick] = useState(false);
@@ -17,7 +18,10 @@ function HoKhau() {
         <ThemHoKhau />
       ) : (
         <div>
-          <TopBar onAddMemberClick={handleAddMemberClick} /> <TableData />
+        <SearchProvider>
+          <TopBar onAddMemberClick={handleAddMemberClick} />
+          <TableData />
+        </SearchProvider>
         </div>
       )}
     </div>

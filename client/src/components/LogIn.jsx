@@ -9,9 +9,9 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
+import {RoleContext} from "./Context/RoleContext.jsx";
 
 const LOGIN_URL = "http://localhost:8080/login";
-var role = 0;
 
 function LogIn() {
   const {
@@ -25,6 +25,7 @@ function LogIn() {
   });
 
   const navigate = useNavigate();
+  const { setRole } = useContext(RoleContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,8 +35,9 @@ function LogIn() {
         password: values.password,
       })
       .then((res) => {
-        role = res.data.role;
-        navigate("/");
+        const role = res.data.role;
+        setRole(role)
+        navigate("/hokhau");
       })
       .catch((error) => console.log(error));
   };
@@ -80,4 +82,3 @@ function LogIn() {
 }
 
 export default LogIn;
-export const RoleContext = createContext(role);

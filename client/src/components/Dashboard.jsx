@@ -7,6 +7,8 @@ import MyBreadcrumbs from "./BreadCrumb";
 import ThemHoKhau from "./ThemHoKhau";
 import EditNhanKhau from "./EditNhanKhau.jsx";
 import ViewNhanKhau from "./ViewNhanKhau.jsx";
+import DonTamVang from "./DonTamVang.jsx";
+import DonTamTru from "./DonTamTru.jsx";
 
 function DashBoard({redirect}) {
   const [selectedMenu, setSelectedMenu] = useState("");
@@ -23,6 +25,10 @@ function DashBoard({redirect}) {
         return <EditNhanKhau/>;
       case "viewnhankhau":
         return <ViewNhanKhau/>;
+      case "dontamtru":
+        return <DonTamTru/>;
+      case "dontamvang":
+        return <DonTamVang/>;
       // Add more cases for other menu options
 
       default:

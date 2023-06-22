@@ -1,17 +1,15 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
 import {useContext, useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import {SearchContext} from "./SearchContext.jsx";
+import {SearchContext} from "../Context/SearchContext.jsx";
 
 const PERSON_URL = "http://localhost:8080/api/person";
 
 const TABLE_HEAD = [
-  "Chủ hộ",
   "Tên",
   "Ngày sinh",
   "Nơi sinh",
   "Quan hệ với chủ hộ",
-    "Action",
 ];
 
 const ITEMS_PER_PAGE = 6; // Number of items to display per page
@@ -22,7 +20,7 @@ function formatDate(dateString) {
   return formattedDate;
 }
 
-export default function TableData() {
+export default function User() {
   const [tableData, setTableData] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -106,15 +104,6 @@ export default function TableData() {
                       color="blue-gray"
                       className="font-normal"
                     >
-                      {IsHouseholder ? "✅" : "❌"}
-                    </Typography>
-                  </td>
-                  <td className="p-4">
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
                       {Name}
                     </Typography>
                   </td>
@@ -145,12 +134,6 @@ export default function TableData() {
                       {RelationshipWithHouseholder}
                     </Typography>
                   </td>
-                  <Link to={`/hokhau/edit/`+ id}>
-                  <Button size="sm" className="bg-green-500 text-black m-2">Sửa</Button>
-                  </Link>
-                  <Link to={`/hokhau/view/`+ id}>
-                  <Button size="sm" className="bg-yellow-400 text-black m-2">Xem</Button>
-                  </Link>
                 </tr>
               )
             )}

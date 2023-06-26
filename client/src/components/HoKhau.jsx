@@ -1,15 +1,15 @@
 import Admin from "./TableData/Admin.jsx";
 import TopBar from "./TopBar";
 import MyBreadcrumbs from "./BreadCrumb";
-import {useContext, useState} from "react";
+import { useContext, useState } from "react";
 import ThemHoKhau from "./ThemHoKhau";
-import {SearchProvider} from "./Context/SearchContext.jsx";
-import {RoleContext, RoleProvider} from "./Context/RoleContext.jsx";
+import { SearchProvider } from "./Context/SearchContext.jsx";
+import { RoleContext, RoleProvider } from "./Context/RoleContext.jsx";
 import User from "./TableData/User.jsx";
 
 function HoKhau() {
   const [isAddMemberClick, setAddMemberClick] = useState(false);
-  const {role} = useContext(RoleContext)
+  const { role } = useContext(RoleContext);
 
   const handleAddMemberClick = () => {
     setAddMemberClick(true);
@@ -21,10 +21,10 @@ function HoKhau() {
         <ThemHoKhau />
       ) : (
         <div>
-            <SearchProvider>
-              <TopBar onAddMemberClick={handleAddMemberClick} />
-              {role === 1 ? <Admin/> : <User/>}
-            </SearchProvider>
+          <SearchProvider>
+            <TopBar onAddMemberClick={handleAddMemberClick} />
+            {role === 1 ? <Admin /> : <User />}
+          </SearchProvider>
         </div>
       )}
     </div>

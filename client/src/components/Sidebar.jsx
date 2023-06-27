@@ -17,8 +17,11 @@ import {
   BuildingOfficeIcon,
 } from "@heroicons/react/24/solid";
 import { TDP_NAME } from "../const";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar(props) {
+  const navigate = useNavigate();
+
   return (
     <Card className="top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-150">
       <div className="mb-2 flex items-center gap-4 p-4">
@@ -30,23 +33,13 @@ function Sidebar(props) {
         </Typography>
       </div>
       <List>
-        <ListItem
-          onClick={() => {
-            props.click("hokhau");
-            return (window.location.href = "/hokhau");
-          }}
-        >
+        <ListItem onClick={() => navigate("/hokhau")}>
           <ListItemPrefix>
             <UserIcon className="h-5 w-5" />
           </ListItemPrefix>
           Hộ khẩu
         </ListItem>
-        <ListItem
-          onClick={() => {
-            props.click("phananh");
-            return (window.location.href = "/phananh");
-          }}
-        >
+        <ListItem onClick={() => navigate("/phananh")}>
           <ListItemPrefix>
             <BellAlertIcon className="h-5 w-5" />
           </ListItemPrefix>
@@ -80,11 +73,7 @@ function Sidebar(props) {
           </ListItemPrefix>
           Cài đặt
         </ListItem>
-        <ListItem
-          onClick={() => {
-            return (window.location.href = "/login");
-          }}
-        >
+        <ListItem onClick={() => navigate("/login")}>
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>

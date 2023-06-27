@@ -1,7 +1,7 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
-import {useContext, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {SearchContext} from "../Context/SearchContext.jsx";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { SearchContext } from "../Context/SearchContext.jsx";
 
 const PERSON_URL = "http://localhost:8080/api/person";
 
@@ -11,7 +11,7 @@ const TABLE_HEAD = [
   "Ngày sinh",
   "Nơi sinh",
   "Quan hệ với chủ hộ",
-    "Action",
+  "Action",
 ];
 
 const ITEMS_PER_PAGE = 6; // Number of items to display per page
@@ -23,6 +23,10 @@ function formatDate(dateString) {
 }
 
 export default function Admin() {
+  const navigate = useNavigate();
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
   const [tableData, setTableData] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -145,12 +149,21 @@ export default function Admin() {
                       {RelationshipWithHouseholder}
                     </Typography>
                   </td>
-                  <Link to={`/hokhau/edit/`+ id}>
-                  <Button size="sm" className="bg-green-500 text-black m-2">Sửa</Button>
-                  </Link>
-                  <Link to={`/hokhau/view/`+ id}>
-                  <Button size="sm" className="bg-yellow-400 text-black m-2">Xem</Button>
-                  </Link>
+
+                  <Button
+                    size="sm"
+                    className="bg-green-500 text-black m-2"
+                    onClick={() => handleNavigate(`/hokhau/edit/${id}`)}
+                  >
+                    Sửa
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-yellow-400 text-black m-2"
+                    onClick={() => handleNavigate(`/hokhau/view/${id}`)}
+                  >
+                    Xem
+                  </Button>
                 </tr>
               )
             )}
@@ -166,13 +179,9 @@ export default function Admin() {
         >
           Trước
         </Button>
-          <Typography
-            variant="small"
-            color="blue-gray"
-            className="font-normal"
-          >
-            {`Trang ${currentPage} trên ${totalPages}`}
-          </Typography>
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {`Trang ${currentPage} trên ${totalPages}`}
+        </Typography>
         <Button
           onClick={goToNextPage}
           disabled={currentPage === totalPages}

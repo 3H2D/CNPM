@@ -1,16 +1,10 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
-import {useContext, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {SearchContext} from "../Context/SearchContext.jsx";
+import { useContext, useEffect, useState } from "react";
+import { SearchContext } from "../Context/SearchContext.jsx";
 
 const PERSON_URL = "http://localhost:8080/api/person";
 
-const TABLE_HEAD = [
-  "Tên",
-  "Ngày sinh",
-  "Nơi sinh",
-  "Quan hệ với chủ hộ",
-];
+const TABLE_HEAD = ["Tên", "Ngày sinh", "Nơi sinh", "Quan hệ với chủ hộ"];
 
 const ITEMS_PER_PAGE = 6; // Number of items to display per page
 
@@ -149,13 +143,9 @@ export default function User() {
         >
           Trước
         </Button>
-          <Typography
-            variant="small"
-            color="blue-gray"
-            className="font-normal"
-          >
-            {`Trang ${currentPage} trên ${totalPages}`}
-          </Typography>
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {`Trang ${currentPage} trên ${totalPages}`}
+        </Typography>
         <Button
           onClick={goToNextPage}
           disabled={currentPage === totalPages}

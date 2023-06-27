@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Chip, Button, Card, Typography } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const FEEDBACK_URL = "http://localhost:8080/api/feedback";
 const FEEDBACK_RESPONSE_URL = "http://localhost:8080/api/feedback-response";
@@ -26,6 +26,11 @@ function PhanAnh() {
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const currentData = tableData.slice(startIndex, endIndex);
+
+  const navigate = useNavigate();
+  const handleNavigate = (responseId) => {
+    navigate(`/phananh/phanhoi/${responseId}`);
+  };
 
   async function getFeedback(feedback_url) {
     const response = await fetch(feedback_url);
@@ -171,9 +176,12 @@ function PhanAnh() {
                       </div>
                     </td>
                     <td className="p-4">
-                      <Link to={`/phananh/phanhoi/${ResponseId}`}>
+                      <button
+                        onClick={() => handleNavigate(ResponseId)}
+                        className="text-blue-500 underline"
+                      >
                         {ResponseContent !== undefined ? "1" : "0"}
-                      </Link>
+                      </button>
                     </td>
                   </tr>
                 )

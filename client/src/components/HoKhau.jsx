@@ -22,7 +22,7 @@ function HoKhau() {
       ) : (
         <div>
           <SearchProvider>
-            <TopBar onAddMemberClick={handleAddMemberClick} />
+            <TopBar />
             {role === 1 ? <Admin /> : <User />}
           </SearchProvider>
         </div>

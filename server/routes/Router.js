@@ -30,6 +30,10 @@ router.delete('household/:id', householdController.deleteHousehold)
 
 router.post('/person', personController.addPerson)
 router.get('/person', personController.getPerson)
+router.get('/person/:id', personController.getPersonById)
+router.get('/person/:id/householder', personController.getHouseholderByMemberId)
+router.get('/person/:id/member', personController.getHouseholdMemberListByMemberId)
+
 router.put('/person/:id', personController.updatePerson)
 router.delete('/person/:id', personController.deletePerson)
 

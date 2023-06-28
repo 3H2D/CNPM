@@ -29,6 +29,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         RelationshipWithHouseholder: {
             type: DataTypes.STRING
+        },
+        CCCD: {
+            type: DataTypes.STRING
         }
     
     })

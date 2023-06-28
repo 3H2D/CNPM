@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // routers
 const router = require('./routes/Router.js')
+const {where} = require("sequelize");
 app.use('/api', router)
 
 // Set up the session middleware
@@ -37,10 +38,10 @@ app.post('/login', async (req, res) => {
       username: req.body.username,
       password: req.body.password,
     };
-  
+
     // Check if the user exists
-    const user = await User.findOne({ username: info.username });
-  
+    const user = await User.findOne({ where : { username: info.username }});
+
     // If the user exists, check if the password is correct
     if (user && user.password === info.password) {
       // Login the user

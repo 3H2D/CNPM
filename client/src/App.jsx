@@ -4,23 +4,52 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashBoard from "./components/Dashboard";
 import HoKhau from "./components/HoKhau";
 import ThemHoKhau from "./components/ThemHoKhau";
+import { RoleProvider } from "./components/Context/RoleContext.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DashBoard />}></Route>
-        <Route path="/hokhau" element={<DashBoard redirect="hokhau" />}></Route>
-        <Route
-          path="/phananh"
-          element={<DashBoard redirect="phananh" />}
-        ></Route>
-        <Route path="/login" element={<LogIn />}></Route>
-        <Route path="/hokhau/themnhankhau" component={ThemHoKhau} />
-      </Routes>
-    </BrowserRouter>
+    <RoleProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DashBoard />}></Route>
+          <Route
+            path="/hokhau"
+            element={<DashBoard redirect="hokhau" />}
+          ></Route>
+          <Route
+            path="/phananh"
+            element={<DashBoard redirect="phananh" />}
+          ></Route>
+          <Route path="/login" element={<LogIn />}></Route>
+          <Route
+            path="/hokhau/themnhankhau"
+            element={<DashBoard redirect="themhokhau" />}
+          ></Route>
+          <Route
+            path="/hokhau/edit/:id"
+            element={<DashBoard redirect="editnhankhau" />}
+          ></Route>
+          <Route
+            path="/hokhau/view/:id"
+            element={<DashBoard redirect="viewnhankhau" />}
+          ></Route>
+          <Route
+            path="/hokhau/dontamtru"
+            element={<DashBoard redirect="dontamtru" />}
+          ></Route>
+          <Route
+            path="/hokhau/dontamvang"
+            element={<DashBoard redirect="dontamvang" />}
+          ></Route>
+          <Route
+            path="/phananh/phanhoi/:id"
+            element={<DashBoard redirect="phanhoi" />}
+          ></Route>
+        </Routes>
+      </BrowserRouter>
+    </RoleProvider>
   );
 }
 

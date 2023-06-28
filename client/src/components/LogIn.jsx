@@ -1,7 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
+import {createContext, useContext, useState} from "react";
 import { useForm } from "react-hook-form";
-import { Navigate, useNavigate } from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import {
   Card,
   Input,
@@ -9,6 +9,9 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
+import {RoleContext} from "./Context/RoleContext.jsx";
+
+const LOGIN_URL = "http://localhost:8080/login";
 
 function LogIn() {
   const {
@@ -22,17 +25,19 @@ function LogIn() {
   });
 
   const navigate = useNavigate();
+  const { setRole } = useContext(RoleContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://10.14.2.112:8080/login", {
+      .post(LOGIN_URL, {
         username: values.username,
         password: values.password,
       })
       .then((res) => {
-        console.log(res);
-        navigate("/");
+        const role = res.data.role;
+        setRole(role)
+        navigate("/hokhau");
       })
       .catch((error) => console.log(error));
   };

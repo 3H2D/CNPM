@@ -11,7 +11,7 @@ const TABLE_HEAD = [
   "Ngày sinh",
   "Nơi sinh",
   "Quan hệ với chủ hộ",
-  "Action",
+  "Căn cước công dân",
 ];
 
 const ITEMS_PER_PAGE = 6; // Number of items to display per page
@@ -99,11 +99,16 @@ export default function Admin() {
                   Birthday,
                   IsHouseholder,
                   PreviousResidencyAddress,
+                  CCCD,
                   RelationshipWithHouseholder,
                 },
                 index
               ) => (
-                <tr key={id} className="even:bg-blue-gray-50/50">
+                <tr
+                  key={id}
+                  className="even:bg-blue-gray-50/50 hover:bg-blue-gray-50 cursor-pointer"
+                  onClick={() => navigate(`/nhankhau/view/${id}`)}
+                >
                   <td className="p-4">
                     <Typography
                       variant="small"
@@ -149,21 +154,15 @@ export default function Admin() {
                       {RelationshipWithHouseholder}
                     </Typography>
                   </td>
-
-                  <Button
-                    size="sm"
-                    className="bg-green-500 text-black m-2"
-                    onClick={() => handleNavigate(`/nhankhau/edit/${id}`)}
-                  >
-                    Sửa
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="bg-yellow-400 text-black m-2"
-                    onClick={() => handleNavigate(`/nhankhau/view/${id}`)}
-                  >
-                    Xem
-                  </Button>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {CCCD}
+                    </Typography>
+                  </td>
                 </tr>
               )
             )}

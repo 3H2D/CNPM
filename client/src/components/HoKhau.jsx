@@ -1,22 +1,26 @@
-import Admin from "./TableData/Admin.jsx";
-import TopBar from "./TopBar";
-import MyBreadcrumbs from "./BreadCrumb";
 import { useContext, useState } from "react";
-import ThemHoKhau from "./ThemHoKhau";
-import { SearchProvider } from "./Context/SearchContext.jsx";
-import { RoleContext, RoleProvider } from "./Context/RoleContext.jsx";
-import User from "./TableData/User.jsx";
-
+import {
+  MagnifyingGlassIcon,
+  ChevronUpDownIcon,
+} from "@heroicons/react/24/outline";
+import {
+  PencilIcon,
+  UserPlusIcon,
+  ArrowLeftOnRectangleIcon,
+  ArrowRightOnRectangleIcon,
+} from "@heroicons/react/24/solid";
+import { Input, Button } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
+import HoKhauTable from "./HoKhauTable";
 function HoKhau() {
-  const [isAddMemberClick, setAddMemberClick] = useState(false);
-  const { role } = useContext(RoleContext);
-
-  const handleAddMemberClick = () => {
-    setAddMemberClick(true);
-  };
+  const navigate = useNavigate();
   return (
     <div>
       <h1 className="text-3xl font-semibold text-blue-gray-700">Hộ khẩu</h1>
+      <div className="mt-4 flex items-center justify-end gap-8"></div>
+      <div>
+        <HoKhauTable />
+      </div>
     </div>
   );
 }

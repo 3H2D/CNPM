@@ -11,6 +11,7 @@ import ViewNhanKhau from "./ViewNhanKhau.jsx";
 import DonTamVang from "./DonTamVang.jsx";
 import DonTamTru from "./DonTamTru.jsx";
 import FeedbackResponse from "./FeedbackResponse";
+import HoKhauDetail from "./HoKhauDetail";
 
 function DashBoard({ redirect }) {
   const [selectedMenu, setSelectedMenu] = useState("");
@@ -36,6 +37,8 @@ function DashBoard({ redirect }) {
         return <DonTamVang />;
       case "phanhoi":
         return <FeedbackResponse />;
+      case "viewhokhau":
+        return <HoKhauDetail />;
       // Add more cases for other menu options
 
       default:

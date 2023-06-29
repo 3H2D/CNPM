@@ -17,6 +17,10 @@ function App() {
             element={<DashBoard redirect="hokhau" />}
           ></Route>
           <Route
+            path="/hokhau/view/:id"
+            element={<DashBoard redirect="viewhokhau" />}
+          ></Route>
+          <Route
             path="/nhankhau"
             element={<DashBoard redirect="nhankhau" />}
           ></Route>

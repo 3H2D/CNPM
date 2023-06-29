@@ -2,8 +2,6 @@ import { useState } from "react";
 import LogIn from "./components/LogIn";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashBoard from "./components/Dashboard";
-import HoKhau from "./components/HoKhau";
-import ThemHoKhau from "./components/ThemHoKhau";
 import { RoleProvider } from "./components/Context/RoleContext.jsx";
 
 function App() {
@@ -19,28 +17,32 @@ function App() {
             element={<DashBoard redirect="hokhau" />}
           ></Route>
           <Route
+            path="/nhankhau"
+            element={<DashBoard redirect="nhankhau" />}
+          ></Route>
+          <Route
             path="/phananh"
             element={<DashBoard redirect="phananh" />}
           ></Route>
           <Route path="/login" element={<LogIn />}></Route>
           <Route
-            path="/hokhau/themnhankhau"
+            path="/nhankhau/themnhankhau"
             element={<DashBoard redirect="themhokhau" />}
           ></Route>
           <Route
-            path="/hokhau/edit/:id"
+            path="/nhankhau/edit/:id"
             element={<DashBoard redirect="editnhankhau" />}
           ></Route>
           <Route
-            path="/hokhau/view/:id"
+            path="/nhankhau/view/:id"
             element={<DashBoard redirect="viewnhankhau" />}
           ></Route>
           <Route
-            path="/hokhau/dontamtru"
+            path="/nhankhau/dontamtru"
             element={<DashBoard redirect="dontamtru" />}
           ></Route>
           <Route
-            path="/hokhau/dontamvang"
+            path="/nhankhau/dontamvang"
             element={<DashBoard redirect="dontamvang" />}
           ></Route>
           <Route

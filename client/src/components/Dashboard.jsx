@@ -2,6 +2,7 @@ import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import { useState } from "react";
 import HoKhau from "./HoKhau";
+import NhanKhau from "./NhanKhau";
 import PhanAnh from "./PhanAnh";
 import MyBreadcrumbs from "./BreadCrumb";
 import ThemHoKhau from "./ThemHoKhau";
@@ -18,6 +19,9 @@ function DashBoard({ redirect }) {
     switch (redirect) {
       case "hokhau":
         return <HoKhau />;
+      case "nhankhau":
+        return <NhanKhau />;
+
       case "phananh":
         return <PhanAnh />;
       case "themhokhau":

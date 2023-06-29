@@ -61,7 +61,7 @@ export default function TopBar() {
                   className="flex items-center gap-3"
                   color="blue"
                   size="sm"
-                  onClick={() => handleNavigate("/hokhau/themnhankhau")}
+                  onClick={() => handleNavigate("/nhankhau/themnhankhau")}
                 >
                   <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Thêm nhân
                   khẩu
@@ -78,7 +78,7 @@ export default function TopBar() {
                   className="flex items-center gap-3"
                   color="blue"
                   size="sm"
-                  onClick={() => handleNavigate("/hokhau/dontamvang")}
+                  onClick={() => handleNavigate("/nhankhau/dontamvang")}
                 >
                   <ArrowLeftOnRectangleIcon
                     strokeWidth={2}
@@ -90,7 +90,7 @@ export default function TopBar() {
                   className="flex items-center gap-3"
                   color="blue"
                   size="sm"
-                  onClick={() => handleNavigate("/hokhau/dontamtru")}
+                  onClick={() => handleNavigate("/nhankhau/dontamtru")}
                 >
                   <ArrowRightOnRectangleIcon
                     strokeWidth={2}

@@ -153,14 +153,14 @@ export default function Admin() {
                   <Button
                     size="sm"
                     className="bg-green-500 text-black m-2"
-                    onClick={() => handleNavigate(`/hokhau/edit/${id}`)}
+                    onClick={() => handleNavigate(`/nhankhau/edit/${id}`)}
                   >
                     Sửa
                   </Button>
                   <Button
                     size="sm"
                     className="bg-yellow-400 text-black m-2"
-                    onClick={() => handleNavigate(`/hokhau/view/${id}`)}
+                    onClick={() => handleNavigate(`/nhankhau/view/${id}`)}
                   >
                     Xem
                   </Button>

@@ -1,7 +1,7 @@
 import axios from "axios";
-import {createContext, useContext, useState} from "react";
+import { createContext, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import {Link, Navigate, useNavigate} from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import {
   Card,
   Input,
@@ -9,7 +9,7 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import {RoleContext} from "./Context/RoleContext.jsx";
+import { RoleContext } from "./Context/RoleContext.jsx";
 
 const LOGIN_URL = "http://localhost:8080/login";
 
@@ -36,8 +36,8 @@ function LogIn() {
       })
       .then((res) => {
         const role = res.data.role;
-        setRole(role)
-        navigate("/hokhau");
+        setRole(role);
+        navigate("/nhankhau");
       })
       .catch((error) => console.log(error));
   };

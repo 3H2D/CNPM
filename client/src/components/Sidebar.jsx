@@ -9,6 +9,7 @@ import {
 } from "@material-tailwind/react";
 import {
   UserIcon,
+  UserGroupIcon,
   UserCircleIcon,
   Cog6ToothIcon,
   InboxIcon,
@@ -18,9 +19,12 @@ import {
 } from "@heroicons/react/24/solid";
 import { TDP_NAME } from "../const";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { RoleContext } from "./Context/RoleContext";
 
 function Sidebar(props) {
   const navigate = useNavigate();
+  const { role } = useContext(RoleContext);
 
   return (
     <Card className="top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-150">
@@ -33,12 +37,22 @@ function Sidebar(props) {
         </Typography>
       </div>
       <List>
-        <ListItem onClick={() => navigate("/hokhau")}>
+        <ListItem onClick={() => navigate("/nhankhau")}>
           <ListItemPrefix>
             <UserIcon className="h-5 w-5" />
           </ListItemPrefix>
-          Hộ khẩu
+          Nhân khẩu
         </ListItem>
+        {role === 1 ? (
+          <ListItem onClick={() => navigate("/hokhau")}>
+            <ListItemPrefix>
+              <UserGroupIcon className="h-5 w-5" />
+            </ListItemPrefix>
+            Hộ khẩu
+          </ListItem>
+        ) : (
+          <></>
+        )}
         <ListItem onClick={() => navigate("/phananh")}>
           <ListItemPrefix>
             <BellAlertIcon className="h-5 w-5" />

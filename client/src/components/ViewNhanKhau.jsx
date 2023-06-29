@@ -34,10 +34,9 @@ export default function ViewNhanKhau() {
     getHouseHolderName(`${PERSON_URL}/${id}/householder`);
   }, []);
 
-  const person = data[id - 1];
+  const person = data.find((person) => person.id === parseInt(id));
   if (person === undefined)
     return <h1 className="text-3xl font-semibold text-blue-gray-700"></h1>;
-  console.log(person);
   return (
     <div>
       <h1 className="text-3xl font-semibold text-blue-gray-700">

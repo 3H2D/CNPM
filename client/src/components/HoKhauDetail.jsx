@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Popup from "reactjs-popup";
+
 import {
   Card,
   CardBody,
@@ -14,6 +16,8 @@ import {
   PencilIcon,
   ScissorsIcon,
 } from "@heroicons/react/24/outline";
+import TachKhau from "./TachKhau";
+import DoiChuHo from "./DoiChuHo";
 function formatDate(dateString) {
   const dateObject = new Date(dateString);
   const formattedDate = dateObject.toISOString().split("T")[0];
@@ -60,22 +64,34 @@ export default function HoKhauDetail() {
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
   };
+
   return (
     <>
       <h1 className="text-3xl font-semibold text-blue-gray-700 mb-4">
         Hộ khẩu {}
       </h1>
+
       <div className="flex items-center gap-4 justify-center">
-        <Button size="sm" className="flex items-center gap-3">
-          <ScissorsIcon strokeWidth={2} className="h-5 w-5" /> Tách khẩu
-        </Button>
-        <Button
-          variant="gradient"
-          size="sm"
-          className="flex items-center gap-3"
+        <Popup
+          trigger={
+            <Button size="sm" className="flex items-center gap-3">
+              <ScissorsIcon strokeWidth={2} className="h-5 w-5" /> Tách khẩu
+            </Button>
+          }
+          modal
         >
-          <PencilIcon strokeWidth={2} className="h-5 w-5" /> Đổi chủ hộ
-        </Button>
+          <TachKhau />
+        </Popup>
+        <Popup
+          trigger={
+            <Button size="sm" className="flex items-center gap-3">
+              <PencilIcon strokeWidth={2} className="h-5 w-5" /> Đổi chủ hộ
+            </Button>
+          }
+          modal
+        >
+          <DoiChuHo members={data} />
+        </Popup>
       </div>
       <div className="flex justify-center">
         <Card className="mt-6 w-96 shadow-xl">

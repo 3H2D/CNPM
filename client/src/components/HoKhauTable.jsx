@@ -121,7 +121,7 @@ export default function HoKhauTable() {
                     </Typography>
                   </td>
                   <td className="p-4">
-                    <TableCellName HouseholderId={HouseholderId} />
+                    <TableCellName HouseholderId={HouseholderId}  />
                   </td>
                   <td className="p-4">
                     <Typography

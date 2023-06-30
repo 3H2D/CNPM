@@ -4,8 +4,9 @@ import {SearchContext} from "../Context/SearchContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {DEFAULT_USER} from "../../const.js";
 
-const USER_ID = 5;
+const USER_ID = DEFAULT_USER;
 const PERSON_URL = `http://localhost:8080/api/person/${USER_ID}/member`;
 
 const TABLE_HEAD = [
@@ -73,14 +74,14 @@ export default function User() {
     let isNotificationDisplayed = false;
 
     if (person != null) {
-        const notify = () => {
-            if (!isNotificationDisplayed) {
-                toast(`Chào mừng Mr.${person.Name} quay trở lại!`);
-                isNotificationDisplayed = true;
-            }
-        };
-        
-        notify();
+        // const notify = () => {
+        //     if (!isNotificationDisplayed) {
+        //         toast(`Chào mừng Mr.${person.Name} quay trở lại!`);
+        //         isNotificationDisplayed = true;
+        //     }
+        // };
+        //
+        // notify();
     }
     return (
         <>

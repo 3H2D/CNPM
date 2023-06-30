@@ -1,15 +1,3 @@
-import { useContext, useState } from "react";
-import {
-  MagnifyingGlassIcon,
-  ChevronUpDownIcon,
-} from "@heroicons/react/24/outline";
-import {
-  PencilIcon,
-  UserPlusIcon,
-  ArrowLeftOnRectangleIcon,
-  ArrowRightOnRectangleIcon,
-} from "@heroicons/react/24/solid";
-import { Input, Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import HoKhauTable from "./HoKhauTable";
 function HoKhau() {

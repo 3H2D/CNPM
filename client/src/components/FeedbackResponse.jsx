@@ -17,13 +17,15 @@ function FeedbackResponse() {
 
   const response = responseData.find((item) => item.id === parseInt(id));
   if (!response) {
-    return <p>Không tìm thấy phản hồi</p>;
+    return (
+      <h1 className="text-3xl font-semibold text-blue-gray-700">
+        Chưa có phản hồi
+      </h1>
+    );
   }
   return (
     <div>
-      <Typography variant="h3" color="blue" textGradient>
-        Nội dung
-      </Typography>
+      <h1 className="text-3xl font-semibold text-blue-gray-700">Nội dung</h1>
       <Typography variant="lead">{response.ResponseContent}</Typography>
 
       <Typography variant="paragraph">

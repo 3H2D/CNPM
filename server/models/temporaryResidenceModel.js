@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
         PreviousResidenceAddress: {
             type: DataTypes.STRING,
         },
+        check: {
+            type: DataTypes.INTEGER,
+        }
     
     })
 

@@ -9,6 +9,7 @@ const TABLE_HEAD = [
   "Chủ hộ",
   "Tên",
   "Ngày sinh",
+  "Giới tính",
   "Nơi sinh",
   "Quan hệ với chủ hộ",
   "Căn cước công dân",
@@ -98,6 +99,7 @@ export default function Admin() {
                   Name,
                   Birthday,
                   IsHouseholder,
+                  Gender,
                   PreviousResidencyAddress,
                   CCCD,
                   RelationshipWithHouseholder,
@@ -134,6 +136,15 @@ export default function Admin() {
                       className="font-normal"
                     >
                       {formatDate(Birthday)}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                    >
+                      {Gender === "F" ? "Nữ" : "Nam"}
                     </Typography>
                   </td>
                   <td className="p-4">

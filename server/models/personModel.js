@@ -32,8 +32,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         CCCD: {
             type: DataTypes.STRING
+        },
+        Gender: {
+            type: DataTypes.STRING
+        },
+        Info: {
+            type: DataTypes.STRING
         }
-    
+
     })
 
     return Person

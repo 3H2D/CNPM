@@ -3,6 +3,7 @@ import LogIn from "./components/LogIn";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashBoard from "./components/Dashboard";
 import { RoleProvider } from "./components/Context/RoleContext.jsx";
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -27,6 +28,14 @@ function App() {
           <Route
             path="/phananh"
             element={<DashBoard redirect="phananh" />}
+          ></Route>
+          <Route
+              path="/thongke"
+              element={<DashBoard redirect="thongke" />}
+          ></Route>
+          <Route
+              path="/temporary"
+              element={<DashBoard redirect="temporary" />}
           ></Route>
           <Route path="/login" element={<LogIn />}></Route>
           <Route
@@ -55,6 +64,7 @@ function App() {
           ></Route>
         </Routes>
       </BrowserRouter>
+      <ToastContainer/>
     </RoleProvider>
   );
 }

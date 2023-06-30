@@ -28,7 +28,7 @@ function Sidebar(props) {
     const {role} = useContext(RoleContext);
 
     return (
-        <Card className="top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-150">
+        <Card className="top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-2xl shadow-blue-gray-150">
             <div className="mb-2 flex items-center gap-4 p-4">
                 <ListItemPrefix>
                     <BuildingOffice2Icon className="h-9 w-9 text-blue-500"/>

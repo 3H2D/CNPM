@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Popup from "reactjs-popup";
@@ -24,6 +24,7 @@ function formatDate(dateString) {
   return formattedDate;
 }
 export default function HoKhauDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [name, setName] = useState("");
@@ -155,8 +156,14 @@ export default function HoKhauDetail() {
                     </Typography>
                   </td>
                 </tr>
+                <tr>
+                  <td className="p-4" onClick={()=>navigate(`/nhankhau/view/${id}`)}>
+                    <Typography className=" hover:text-blue-500 cursor-pointer">Xem chi tiết</Typography>
+                  </td>
+                </tr>
               </tbody>
             </table>
+
           </CardBody>
           <CardFooter className="pt-0 flex">
             <Button

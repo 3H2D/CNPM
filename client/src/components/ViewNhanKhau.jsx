@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { Typography } from "@material-tailwind/react";
+import {Button, Typography} from "@material-tailwind/react";
 
 const PERSON_URL = "http://localhost:8080/api/person";
 function formatDate(dateString) {
@@ -42,6 +42,9 @@ export default function ViewNhanKhau() {
       <h1 className="text-3xl font-semibold text-blue-gray-700">
         Xem thông tin nhân khẩu {person.Name}
       </h1>
+      <div className="flex justify-end">
+      <Button size="sm" onClick={()=>navigate(`/nhankhau/edit/${id}`)}>Cập nhật thông tin</Button>
+      </div>
       <table className="w-full min-w-max table-auto text-left">
         <tbody>
           <tr
@@ -75,6 +78,16 @@ export default function ViewNhanKhau() {
           </tr>
           <tr className="even:bg-blue-gray-50/50">
             <td className="p-4">
+              <Typography className="mb-2">Giới tính</Typography>
+            </td>
+            <td className="p-4">
+              <Typography className="mb-2">
+                {person.Gender === "M" ? "Nam" : "Nữ"}
+              </Typography>
+            </td>
+          </tr>
+          <tr className="even:bg-blue-gray-50/50">
+            <td className="p-4">
               <Typography className="mb-2">Nơi sinh</Typography>
             </td>
             <td className="p-4">
@@ -100,6 +113,17 @@ export default function ViewNhanKhau() {
             <td className="p-4">
               <Typography className="mb-2">
                 {person.RelationshipWithHouseholder}
+              </Typography>
+            </td>
+          </tr>
+          <tr className="even:bg-blue-gray-50/50">
+            <td className="p-4">
+              <Typography className="mb-2">Thông tin liên quan</Typography>
+            </td>
+            <td className="p-4">
+              <Typography className="mb-2">
+                {person.Info} <br></br>{" cập nhật lần cuối: "}
+                {formatDate(person.updatedAt)}
               </Typography>
             </td>
           </tr>

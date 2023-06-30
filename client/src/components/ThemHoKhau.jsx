@@ -41,6 +41,7 @@ export default function ThemHoKhau() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const Gender = isMale ? "M" : "F";
 
     const data = {
       Name,
@@ -50,6 +51,7 @@ export default function ThemHoKhau() {
       PreviousResidencyAddress,
       RelationshipWithHouseholder,
       IsHouseholder,
+      Gender,
       householdId,
     };
 

@@ -10,13 +10,15 @@ import User from "./TableData/User.jsx";
 function NhanKhau() {
   const [isAddMemberClick, setAddMemberClick] = useState(false);
   const { role } = useContext(RoleContext);
-
+  const notify = () => toast("Wow so easy!");
   const handleAddMemberClick = () => {
     setAddMemberClick(true);
   };
   return (
     <div>
       <h1 className="text-3xl font-semibold text-blue-gray-700">Nhân khẩu</h1>
+
+      {/*<ToastContainer />*/}
       {isAddMemberClick ? (
         <ThemHoKhau />
       ) : (
@@ -25,6 +27,7 @@ function NhanKhau() {
             <TopBar />
             {role === 1 ? <Admin /> : <User />}
           </SearchProvider>
+
         </div>
       )}
     </div>

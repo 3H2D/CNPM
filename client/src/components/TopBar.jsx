@@ -7,6 +7,7 @@ import {
   UserPlusIcon,
   ArrowLeftOnRectangleIcon,
   ArrowRightOnRectangleIcon,
+    BookmarkIcon,
 } from "@heroicons/react/24/solid";
 import {
   Card,
@@ -65,6 +66,14 @@ export default function TopBar() {
                 >
                   <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Thêm nhân
                   khẩu
+                </Button>
+                <Button
+                    className="flex items-center gap-3"
+                    color="blue"
+                    size="sm"
+                    onClick={() => handleNavigate("/temporary")}
+                >
+                  <BookmarkIcon strokeWidth={2} className="h-4 w-4" /> Xem đơn tạm trú & tạm vắng
                 </Button>
               </div>
             </div>

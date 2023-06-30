@@ -12,6 +12,8 @@ import DonTamVang from "./DonTamVang.jsx";
 import DonTamTru from "./DonTamTru.jsx";
 import FeedbackResponse from "./FeedbackResponse";
 import HoKhauDetail from "./HoKhauDetail";
+import ThongKe from "./ThongKe.jsx";
+import Temporary from "./Temporary.jsx";
 
 function DashBoard({ redirect }) {
   const [selectedMenu, setSelectedMenu] = useState("");
@@ -40,6 +42,10 @@ function DashBoard({ redirect }) {
       case "viewhokhau":
         return <HoKhauDetail />;
       // Add more cases for other menu options
+      case "thongke":
+        return <ThongKe />;
+      case "temporary":
+        return  <Temporary />;
 
       default:
         return null;

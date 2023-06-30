@@ -9,6 +9,7 @@ const addTemporaryAbsence = async(req, res) => {
         EndDate: req.body.EndDate,
         Destination: req.body.Destination,
         Reason: req.body.Reason,
+        check: req.body.check,
     }
 
     try {

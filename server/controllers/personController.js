@@ -14,7 +14,9 @@ const addPerson = async(req, res) => {
         IsHouseholder: req.body.IsHouseholder,
         RelationshipWithHouseholder: req.body.RelationshipWithHouseholder,
         householdId: req.body.householdId,
-        CCCD: req.body.CCCD
+        CCCD: req.body.CCCD,
+        Gender: req.body.Gender,
+        Info: req.body.Info,
     }
 
     try {

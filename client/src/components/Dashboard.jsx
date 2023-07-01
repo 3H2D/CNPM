@@ -14,6 +14,7 @@ import FeedbackResponse from "./FeedbackResponse";
 import HoKhauDetail from "./HoKhauDetail";
 import ThongKe from "./ThongKe.jsx";
 import Temporary from "./Temporary.jsx";
+import Account from "./Account.jsx";
 
 function DashBoard({ redirect }) {
   const [selectedMenu, setSelectedMenu] = useState("");
@@ -41,11 +42,12 @@ function DashBoard({ redirect }) {
         return <FeedbackResponse />;
       case "viewhokhau":
         return <HoKhauDetail />;
-      // Add more cases for other menu options
       case "thongke":
         return <ThongKe />;
       case "temporary":
         return  <Temporary />;
+      case "account":
+        return <Account />;
 
       default:
         return null;

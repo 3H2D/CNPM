@@ -22,11 +22,12 @@ import {TDP_NAME} from "../const";
 import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {RoleContext} from "./Context/RoleContext";
+import {IdContext} from "./Context/IdContext.jsx";
 
 function Sidebar(props) {
     const navigate = useNavigate();
     const {role} = useContext(RoleContext);
-
+    const {id} = useContext(IdContext);
     return (
         <Card className="top-4 left-4 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-2xl shadow-blue-gray-150">
             <div className="mb-2 flex items-center gap-4 p-4">
@@ -89,7 +90,7 @@ function Sidebar(props) {
                     </ListItemSuffix>
                 </ListItem>
                 <hr className="my-2 border-blue-gray-50"/>
-                <ListItem>
+                <ListItem onClick={() => navigate(`/account/${id}`)}>
                     <ListItemPrefix>
                         <UserCircleIcon className="h-5 w-5"/>
                     </ListItemPrefix>

@@ -1,4 +1,4 @@
-import { Button, Card, Typography } from "@material-tailwind/react";
+import { Button, Card, Typography, Chip } from "@material-tailwind/react";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import TableCellName from "./TableCell/Name";
@@ -112,13 +112,15 @@ export default function HoKhauTable() {
                     </Typography>
                   </td>
                   <td className="p-4">
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
+                    <div className="w-max">
+                    <Chip
+                      variant="ghost"
+                      size="sm"
+                      className="mr-0"
+                      value={HouseholdNumber}
                     >
-                      {HouseholdNumber}
-                    </Typography>
+                    </Chip>
+                    </div>
                   </td>
                   <td className="p-4">
                     <TableCellName HouseholderId={HouseholderId}  />

@@ -91,7 +91,7 @@ export default function HoKhauDetail() {
           }
           modal
         >
-          <DoiChuHo members={data} />
+          <DoiChuHo members={data}/>
         </Popup>
       </div>
       <div className="flex justify-center">
@@ -157,7 +157,7 @@ export default function HoKhauDetail() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4" onClick={()=>navigate(`/nhankhau/view/${id}`)}>
+                  <td className="p-4" onClick={()=>navigate(`/nhankhau/view/${member.id}`)}>
                     <Typography className=" hover:text-blue-500 cursor-pointer">Xem chi tiết</Typography>
                   </td>
                 </tr>

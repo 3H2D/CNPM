@@ -9,24 +9,44 @@ import { Select, Option } from "@material-tailwind/react";
 import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import {toast} from "react-toastify";
 const HOUSEHOLDER = "http://localhost:8080/api/household";
 export default function DoiChuHo({ members }) {
-  const { id } = useParams();
+
   const [selectedMember, setSelectedMember] = useState("");
   const [idMember, setId] = useState(0);
   const handleChange = (event) => {
     setId(event);
   };
 
+  const id = members[0].householdId;
+  const  oldHouseholderId  = members[0].id;
+
+
   const ok = (e) => {
     e.preventDefault();
     const data = {
       HouseholderId: idMember,
     };
+    const url = `${HOUSEHOLDER}/${id}`;
+
     axios
       .put(`${HOUSEHOLDER}/${id}`, data)
       .then((res) => {
         console.log(res);
+        axios.put(`http://localhost:8080/api/person/${idMember}`, {
+            IsHouseholder: 1,
+            Info: "Cập nhật thay đổi thành chủ hộ"
+        }).then((res=>{
+
+        }))
+        axios.put(`http://localhost:8080/api/person/${oldHouseholderId}`, {
+          IsHouseholder: 0,
+          Info: "Cập nhật xoá chủ hộ"
+        }).then((res=>{
+
+        }))
+        toast.success("Đổi chủ hộ thành công");
       })
       .catch((error) => {
         console.log(error);

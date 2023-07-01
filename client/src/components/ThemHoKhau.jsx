@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
 import { Select, Option } from "@material-tailwind/react";
+import {toast} from "react-toastify";
 
 export default function ThemHoKhau() {
   const [Name, setName] = useState("");
@@ -62,8 +63,10 @@ export default function ThemHoKhau() {
         "http://localhost:8080/api/person",
         data
       );
+      toast.success(`Thêm nhân khẩu ${data.Name} thành công!`)
       //console.log(response.data);
     } catch (error) {
+      toast.error(`Thêm nhân khẩu ${data.Name} thất bại!`)
       console.log(error);
     }
   };

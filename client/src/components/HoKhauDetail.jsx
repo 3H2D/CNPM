@@ -81,7 +81,7 @@ export default function HoKhauDetail() {
           }
           modal
         >
-          <TachKhau />
+          <TachKhau members={data}/>
         </Popup>
         <Popup
           trigger={

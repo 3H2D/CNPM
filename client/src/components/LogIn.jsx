@@ -12,6 +12,7 @@ import {
 import {RoleContext} from "./Context/RoleContext.jsx";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {IdContext} from "./Context/IdContext.jsx";
 
 const LOGIN_URL = "http://localhost:8080/login";
 
@@ -29,6 +30,8 @@ function LogIn() {
     const navigate = useNavigate();
     const {setRole} = useContext(RoleContext);
 
+    const {id, setId} = useContext(IdContext);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
@@ -38,17 +41,35 @@ function LogIn() {
             })
             .then((res) => {
                 const role = res.data.role;
+                const id = res.data.id;
                 setRole(role);
+                setId(res.data.id)
                 const notify = () => {
                     if (role === 0) {
-                        toast(`Chào mừng Mr.Adelbert Ironmonger quay trở lại!`);
+                        toast.success("Đăng nhập thành công!");
+                        if (id === 12) {
+                            toast(`Chào mừng Mr.Denys Sawle quay trở lại!`);
+
+                        } else if (id === 5) {
+                            toast(`Chào mừng Mr.Adelbert Ironmonger quay trở lại!`);
+
+                        }
+                    } else if (role === 1) {
+                        toast.success("Đăng nhập thành công!");
+                        toast.info("Chào mừng Admin quay trở lại!");
+
                     }
                 };
+
+                console.log(res.data.id)
 
                 notify();
                 navigate("/nhankhau");
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                console.log(error)
+                toast.error("Sai tên đăng nhập hoặc mật khẩu!");
+            });
     };
 
     return (

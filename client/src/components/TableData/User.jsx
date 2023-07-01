@@ -5,9 +5,9 @@ import {useNavigate} from "react-router-dom";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {DEFAULT_USER} from "../../const.js";
+import {IdContext} from "../Context/IdContext.jsx";
 
-const USER_ID = DEFAULT_USER;
-const PERSON_URL = `http://localhost:8080/api/person/${USER_ID}/member`;
+
 
 const TABLE_HEAD = [
     "Tên",
@@ -27,6 +27,9 @@ function formatDate(dateString) {
 }
 
 export default function User() {
+    const { id } = useContext(IdContext);
+    const USER_ID = id;
+    const PERSON_URL = `http://localhost:8080/api/person/${USER_ID}/member`;
 
     const navigate = useNavigate();
 

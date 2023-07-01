@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, Textarea, Typography, Collapse, CardBody, Card, Chip, CardFooter} from "@material-tailwind/react";
 import {InformationCircleIcon, ArrowDownRightIcon, ArrowLongRightIcon} from "@heroicons/react/24/solid";
 import {Select, Option} from "@material-tailwind/react";
@@ -7,6 +7,7 @@ import {DEFAULT_USER} from "../const.js";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from "react-router-dom";
+import {IdContext} from "./Context/IdContext.jsx";
 
 function formatDate(dateString) {
     const dateObject = new Date(dateString);
@@ -52,7 +53,8 @@ function PhanAnhForm() {
         return
     }
 
-    const fb = data.filter((item) => item.personId === DEFAULT_USER);
+    const {id} = useContext(IdContext)
+    const fb = data.filter((item) => item.personId === id);
     fb.reverse()
     // console.log(fb)
     const toggleOpen = () => setOpen(cur => !cur);

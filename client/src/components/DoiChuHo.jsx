@@ -1,15 +1,8 @@
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
-import { Select, Option } from "@material-tailwind/react";
+import {Button, Card, CardBody, CardFooter, Option, Select, Typography,} from "@material-tailwind/react";
 import axios from "axios";
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, {useState} from "react";
 import {toast} from "react-toastify";
+
 const HOUSEHOLDER = "http://localhost:8080/api/household";
 export default function DoiChuHo({ members }) {
 
@@ -36,6 +29,7 @@ export default function DoiChuHo({ members }) {
         console.log(res);
         axios.put(`http://localhost:8080/api/person/${idMember}`, {
             IsHouseholder: 1,
+            RelationshipWithHouseholder: "self",
             Info: "Cập nhật thay đổi thành chủ hộ"
         }).then((res=>{
 

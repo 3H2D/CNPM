@@ -1,13 +1,12 @@
-import { Button, Card, Typography, Chip } from "@material-tailwind/react";
-import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import {Card, Chip, Typography} from "@material-tailwind/react";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import TableCellName from "./TableCell/Name";
 import TableCellNMember from "./TableCell/NMember";
 
 const HOUSEHOLD_URL = "http://localhost:8080/api/household";
 
 const TABLE_HEAD = [
-  "#",
   "Số hộ khẩu",
   "Tên chủ hộ",
   "Ngày cập nhật",
@@ -15,7 +14,7 @@ const TABLE_HEAD = [
   "Số thành viên",
 ];
 
-const ITEMS_PER_PAGE = 6; // Number of items to display per page
+const ITEMS_PER_PAGE = 10; // Number of items to display per page
 
 function formatDate(dateString) {
   const dateObject = new Date(dateString);
@@ -102,16 +101,8 @@ export default function HoKhauTable() {
                   className="even:bg-blue-gray-50/50 hover:bg-blue-gray-50 cursor-pointer"
                   onClick={() => navigate(`/hokhau/view/${HouseholderId}`)}
                 >
-                  <td className="p-4">
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {id}
-                    </Typography>
-                  </td>
-                  <td className="p-4">
+
+                <td className="p-4">
                     <div className="w-max">
                     <Chip
                       variant="ghost"

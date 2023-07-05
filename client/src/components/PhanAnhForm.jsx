@@ -1,10 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Button, Textarea, Typography, Collapse, CardBody, Card, Chip, CardFooter} from "@material-tailwind/react";
-import {InformationCircleIcon, ArrowDownRightIcon, ArrowLongRightIcon} from "@heroicons/react/24/solid";
-import {Select, Option} from "@material-tailwind/react";
+import {Button, Card, CardBody, Chip, Collapse, Option, Select, Textarea, Typography} from "@material-tailwind/react";
+import {InformationCircleIcon} from "@heroicons/react/24/solid";
 import axios from "axios";
-import {DEFAULT_USER} from "../const.js";
-import {ToastContainer, toast} from 'react-toastify';
+import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from "react-router-dom";
 import {IdContext} from "./Context/IdContext.jsx";
@@ -64,7 +62,7 @@ function PhanAnhForm() {
             Content: content,
             Category: category,
             Status: "chưa xử lý",
-            personId: DEFAULT_USER,
+            personId: id,
         }
         try {
             const response = await axios.post("http://localhost:8080/api/feedback", data);

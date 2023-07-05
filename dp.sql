@@ -11,7 +11,7 @@
  Target Server Version : 80033 (8.0.33)
  File Encoding         : 65001
 
- Date: 01/07/2023 13:16:50
+ Date: 05/07/2023 10:44:21
 */
 
 SET NAMES utf8mb4;
@@ -63,7 +63,7 @@ CREATE TABLE `feedbacks`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `personId`(`personId` ASC) USING BTREE,
   CONSTRAINT `feedbacks_ibfk_1` FOREIGN KEY (`personId`) REFERENCES `people` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of feedbacks
@@ -86,8 +86,6 @@ INSERT INTO `feedbacks` VALUES (15, 'Fusce lacus purus, aliquet at, feugiat non,
 INSERT INTO `feedbacks` VALUES (16, 'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', 'Phản ánh', 'chưa xử lý', 1, '2023-06-16 12:22:28', '2023-06-16 12:22:28');
 INSERT INTO `feedbacks` VALUES (17, 'Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum.', 'Khiếu nại', 'xong', 23, '2023-06-16 12:22:28', '2023-06-16 12:22:28');
 INSERT INTO `feedbacks` VALUES (18, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus.', 'Phản ánh', 'đang xử lý', 1, '2023-06-16 12:22:28', '2023-06-16 12:22:28');
-INSERT INTO `feedbacks` VALUES (19, 'Xin yêu em Huyền hàng xóm', 'Khiếu nại', 'chưa xử lý', 12, '2023-06-16 12:22:28', '2023-06-16 12:22:28');
-INSERT INTO `feedbacks` VALUES (23, 'Tại sao lại có thể khiếu nại ở đây', 'Khiếu nại', 'chưa xử lý', 5, '2023-07-01 01:43:37', '2023-07-01 01:43:37');
 
 -- ----------------------------
 -- Table structure for households
@@ -101,18 +99,17 @@ CREATE TABLE `households`  (
   `createdAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of households
 -- ----------------------------
-INSERT INTO `households` VALUES (1, '001', '123 Street', 4, '2023-06-16 12:22:38', '2023-06-16 12:22:38');
-INSERT INTO `households` VALUES (2, '002', '456 Lane', 9, '2023-06-16 12:22:38', '2023-06-16 12:22:38');
-INSERT INTO `households` VALUES (3, '003', '789 Avenue', 15, '2023-06-16 12:22:38', '2023-06-16 12:22:38');
+INSERT INTO `households` VALUES (1, '001', '123 Street', 42, '2023-06-16 12:22:38', '2023-07-01 20:55:19');
+INSERT INTO `households` VALUES (2, '002', '456 Lane', 43, '2023-06-16 12:22:38', '2023-07-01 21:06:57');
+INSERT INTO `households` VALUES (3, '003', '789 Avenue', 41, '2023-06-16 12:22:38', '2023-07-01 15:24:22');
 INSERT INTO `households` VALUES (4, '004', '321 Boulevard', 20, '2023-06-16 12:22:38', '2023-07-01 12:48:51');
 INSERT INTO `households` VALUES (5, '005', '654 Road', 23, '2023-06-16 12:22:38', '2023-06-16 12:22:38');
-INSERT INTO `households` VALUES (6, '593', 'Xã Nham Đàn', 40, '2023-07-01 13:13:32', '2023-07-01 13:13:32');
-INSERT INTO `households` VALUES (7, '315', 'Xã Nham Đàn', 40, '2023-07-01 13:13:58', '2023-07-01 13:13:58');
+INSERT INTO `households` VALUES (14, '935', '5181 Northview Court', 24, '2023-07-01 21:07:23', '2023-07-01 21:07:23');
 
 -- ----------------------------
 -- Table structure for people
@@ -137,36 +134,39 @@ CREATE TABLE `people`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `householdId`(`householdId` ASC) USING BTREE,
   CONSTRAINT `people_ibfk_1` FOREIGN KEY (`householdId`) REFERENCES `households` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 41 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of people
 -- ----------------------------
-INSERT INTO `people` VALUES (1, 'Brenna Swannack', '1982-07-19 20:15:33', NULL, NULL, '2019-03-28 23:08:42', '2 Shasta Alley', 0, 'parent', 3, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202045816', NULL, 'F');
+INSERT INTO `people` VALUES (1, 'Brenna Swannack', '1982-07-19 20:15:33', NULL, NULL, '2019-03-28 23:08:42', '2 Shasta Alley', 0, 'self', 3, '2023-06-16 12:20:47', '2023-07-01 21:07:49', '36202045816', 'đã mất', 'F');
 INSERT INTO `people` VALUES (2, 'Eberhard Curgenven', '1966-02-19 20:38:19', NULL, NULL, '2021-04-08 20:31:12', '9 3rd Park', 0, 'children', 3, '2023-06-16 12:20:47', '2023-06-30 21:35:12', '36202024723', 'đã mất', 'F');
-INSERT INTO `people` VALUES (3, 'Bridie Smellie', '1961-01-04 15:38:08', NULL, NULL, '2007-01-17 03:45:22', '9 Bartelt Center', 0, 'relative', 5, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202036864', NULL, 'M');
-INSERT INTO `people` VALUES (4, 'John Doe', '1980-01-01 00:00:00', 'City A', 'City A', '2000-01-01 00:00:00', 'City A', 1, 'Self', 1, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202090499', NULL, 'M');
+INSERT INTO `people` VALUES (3, 'Bridie Smellie', '1961-01-04 15:38:08', NULL, NULL, '2007-01-17 03:45:22', '9 Bartelt Center', 0, 'relative', 5, '2023-06-16 12:20:47', '2023-07-01 20:53:14', '36202036864', 'đã mất', 'M');
+INSERT INTO `people` VALUES (4, 'John Doe', '1980-01-01 00:00:00', 'City A', 'City A', '2000-01-01 00:00:00', 'City A', 0, 'Self', 1, '2023-06-16 12:20:47', '2023-07-01 20:55:19', '36202090499', 'Cập nhật xoá chủ hộ', 'M');
 INSERT INTO `people` VALUES (5, 'Adelbert Ironmonger', '1990-11-29 18:17:14', NULL, NULL, '1994-11-07 18:27:34', '1 Mosinee Alley', 0, 'children', 4, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202016712', NULL, 'F');
 INSERT INTO `people` VALUES (6, 'Zenia Lovegrove', '1992-09-16 00:38:00', NULL, NULL, '1987-07-19 10:37:54', '01323 Merrick Way', 0, 'husband', 5, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202034160', NULL, 'M');
-INSERT INTO `people` VALUES (7, 'Delores Kyston', '1970-02-25 03:53:59', NULL, NULL, '2019-06-02 17:08:51', '9000 Eastlawn Center', 0, 'children', 3, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202072590', 'đã qua đời', 'M');
-INSERT INTO `people` VALUES (8, 'Waneta Pohlke', '2017-10-02 11:23:10', NULL, NULL, '2006-07-01 20:50:57', '4482 Stone Corner Park', 0, 'children', 4, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202017215', NULL, 'M');
-INSERT INTO `people` VALUES (9, 'Jane Louis', '1982-02-02 00:00:00', 'City B', 'City B', '2002-02-02 00:00:00', 'City B', 1, 'Self', 2, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202006277', NULL, 'F');
+INSERT INTO `people` VALUES (7, 'Delores Kyston', '1970-02-25 03:53:59', NULL, NULL, '2019-06-02 17:08:51', '9000 Eastlawn Center', 1, 'self', NULL, '2023-06-16 12:20:47', '2023-07-01 13:35:26', '36202072590', 'Cập nhật thay đổi thành chủ hộ', 'M');
+INSERT INTO `people` VALUES (8, 'Waneta Pohlke', '2017-10-02 11:23:10', NULL, NULL, '2006-07-01 20:50:57', '4482 Stone Corner Park', 0, 'children', 4, '2023-06-16 12:20:47', '2023-07-01 21:03:27', '36202017215', 'Đã qua đời', 'M');
+INSERT INTO `people` VALUES (9, 'Jane Louis', '1982-02-02 00:00:00', 'City B', 'City B', '2002-02-02 00:00:00', 'City B', 0, 'Self', 2, '2023-06-16 12:20:47', '2023-07-01 21:06:57', '36202006277', 'Cập nhật xoá chủ hộ', 'F');
 INSERT INTO `people` VALUES (10, 'Lotty Vaggs', '1960-07-21 03:04:46', NULL, NULL, '2017-08-19 23:09:03', '362 Warrior Avenue', 0, 'wife', 2, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202080323', NULL, 'F');
 INSERT INTO `people` VALUES (11, 'Muhammad Muckleston', '1976-07-23 11:10:16', NULL, NULL, '1993-07-01 19:52:24', '1 Forster Terrace', 0, 'children', 5, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202087015', NULL, 'M');
-INSERT INTO `people` VALUES (12, 'Denys Sawle', '1951-05-25 09:23:08', NULL, NULL, '2010-04-23 12:02:03', '08323 Homewood Point', 0, 'relative', 5, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202019605', NULL, 'F');
+INSERT INTO `people` VALUES (12, 'Denys Sawle', '1951-05-25 09:23:08', NULL, NULL, '2010-04-23 12:02:03', '08323 Homewood Point', 0, 'relative', 5, '2023-06-16 12:20:47', '2023-07-01 13:25:55', '36202019605', 'Đã khỏi ốm', 'F');
 INSERT INTO `people` VALUES (13, 'Demetra Fishbie', '1973-02-03 21:32:11', NULL, NULL, '1989-01-27 20:48:34', '21363 Shopko Park', 0, 'husband', 1, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202062596', NULL, 'M');
-INSERT INTO `people` VALUES (14, 'Noble Lartice', '1955-02-19 09:50:37', NULL, NULL, '1987-06-13 22:35:59', '24 Knutson Court', 0, 'wife', 5, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202016065', NULL, 'F');
-INSERT INTO `people` VALUES (15, 'Jim Smith', '1984-03-03 00:00:00', 'City C', 'City C', '2004-03-03 00:00:00', 'City C', 1, 'Self', 3, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202097960', NULL, 'M');
-INSERT INTO `people` VALUES (16, 'Bondie Ellerman', '1957-10-21 10:07:39', NULL, NULL, '1997-11-09 05:47:27', '14 Burrows Hill', 0, 'children', 3, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202031129', NULL, 'M');
+INSERT INTO `people` VALUES (14, 'Noble Lartice', '1955-02-19 09:50:37', NULL, NULL, '1987-06-13 22:35:59', '24 Knutson Court', 1, 'self', NULL, '2023-06-16 12:20:47', '2023-07-01 13:44:51', '36202016065', 'Cập nhật thay đổi thành chủ hộ', 'F');
+INSERT INTO `people` VALUES (15, 'Jim Smith', '1984-03-03 00:00:00', 'City C', 'City C', '2004-03-03 00:00:00', 'City C', 1, 'self', NULL, '2023-06-16 12:20:47', '2023-07-01 13:35:04', '36202097960', 'Cập nhật thay đổi thành chủ hộ', 'M');
+INSERT INTO `people` VALUES (16, 'Bondie Ellerman', '1957-10-21 10:07:39', NULL, NULL, '1997-11-09 05:47:27', '14 Burrows Hill', 1, 'self', NULL, '2023-06-16 12:20:47', '2023-07-01 13:23:26', '36202031129', 'Cập nhật thay đổi thành chủ hộ', 'M');
 INSERT INTO `people` VALUES (17, 'Kaiser Rizzello', '2004-01-14 01:00:49', NULL, NULL, '2000-02-11 19:36:32', '863 Loomis Terrace', 0, 'relative', 3, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202081486', NULL, 'F');
 INSERT INTO `people` VALUES (18, 'Ferrel Alwen', '1976-01-23 00:13:44', NULL, NULL, '1989-10-24 15:37:05', '203 Elka Alley', 0, 'husband', 2, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202048073', NULL, 'M');
-INSERT INTO `people` VALUES (19, 'Vitia Oldman', '2004-01-15 15:29:05', NULL, NULL, '1989-11-04 02:20:19', '6 Chinook Circle', 0, 'parent', 5, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202020299', NULL, 'F');
+INSERT INTO `people` VALUES (19, 'Vitia Oldman', '2004-01-15 15:29:05', NULL, NULL, '1989-11-04 02:20:19', '6 Chinook Circle', 0, 'relative', 4, '2023-06-16 12:20:47', '2023-07-01 20:55:49', '36202020299', 'Cập nhật thay đổi thành chủ hộ', 'F');
 INSERT INTO `people` VALUES (20, 'Jessica Smith', '1986-04-04 00:00:00', 'City D', 'City D', '2006-04-04 00:00:00', 'City D', 1, 'Self', 4, '2023-06-16 12:20:47', '2023-07-01 12:48:51', '36202016681', 'Cập nhật thay đổi thành chủ hộ', 'F');
 INSERT INTO `people` VALUES (21, 'Veronike Jiracek', '1997-08-03 01:47:32', NULL, NULL, '2011-03-27 02:55:30', '683 Stone Corner Court', 0, 'children', 2, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202016691', NULL, 'M');
 INSERT INTO `people` VALUES (22, 'Sybille Fearfull', '1961-05-24 07:48:09', NULL, NULL, '2007-03-31 13:08:04', '48 Randy Hill', 0, 'wife', 3, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202216681', NULL, 'F');
 INSERT INTO `people` VALUES (23, 'James Johnson', '1988-05-05 00:00:00', 'City E', 'City E', '2008-05-05 00:00:00', 'City E', 1, 'Self', 5, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36302016681', NULL, 'M');
-INSERT INTO `people` VALUES (24, 'Kaiser Klaesson', '1994-09-03 06:22:18', NULL, NULL, '1987-11-25 12:45:41', '5181 Northview Court', 0, 'husband', 4, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202016683', NULL, 'M');
-INSERT INTO `people` VALUES (25, 'Beaufort Lawes', '1982-09-25 10:22:09', NULL, NULL, '2003-04-03 05:03:59', '2 Delladonna Center', 0, 'wife', 4, '2023-06-16 12:20:47', '2023-06-16 12:21:54', '36202017683', NULL, 'M');
+INSERT INTO `people` VALUES (24, 'Kaiser Klaesson', '1994-09-03 06:22:18', NULL, NULL, '1987-11-25 12:45:41', '5181 Northview Court', 1, 'self', 14, '2023-06-16 12:20:47', '2023-07-01 21:07:23', '36202016683', 'Cập nhật thay đổi thành chủ hộ', 'M');
+INSERT INTO `people` VALUES (25, 'Beaufort Lawes', '1982-09-25 10:22:09', NULL, NULL, '2003-04-03 05:03:59', '2 Delladonna Center', 0, 'children', 2, '2023-06-16 12:20:47', '2023-07-01 15:25:06', '36202017683', 'Cập nhật thay đổi thành chủ hộ', 'M');
+INSERT INTO `people` VALUES (41, 'Rô Nan Độ', '2005-02-18 00:00:00', 'Bồ Đào Nha', NULL, NULL, 'Anh Lợn', 1, 'self', 3, '2023-07-01 13:32:34', '2023-07-01 15:24:22', '349238423', 'Cập nhật thay đổi thành chủ hộ', 'M');
+INSERT INTO `people` VALUES (42, 'Al Sa Tỵ', '2023-07-10 00:00:00', 'Argentina', NULL, NULL, 'Bồ Đào Nha', 1, 'self', 1, '2023-07-01 20:54:08', '2023-07-01 20:55:19', '1324324324', 'Cập nhật thay đổi thành chủ hộ', 'M');
+INSERT INTO `people` VALUES (43, 'AL Sa Tỵ', '2018-06-14 00:00:00', 'Argentina', NULL, NULL, 'Tay ban nha', 1, 'self', 2, '2023-07-01 21:06:15', '2023-07-01 21:06:57', '34093284', 'Cập nhật thay đổi thành chủ hộ', 'F');
 
 -- ----------------------------
 -- Table structure for temporary_absences
@@ -185,7 +185,7 @@ CREATE TABLE `temporary_absences`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `personId`(`personId` ASC) USING BTREE,
   CONSTRAINT `temporary_absences_ibfk_1` FOREIGN KEY (`personId`) REFERENCES `people` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of temporary_absences
@@ -224,7 +224,6 @@ INSERT INTO `temporary_residences` VALUES (4, '2022-08-10 00:01:26', '2024-03-23
 INSERT INTO `temporary_residences` VALUES (5, '2023-04-25 13:19:28', '2023-11-28 13:38:12', '62851 Johnson Way', 16, '2023-06-16 12:22:54', '2023-06-16 12:22:54', 1);
 INSERT INTO `temporary_residences` VALUES (6, '2023-05-28 04:52:47', '2024-01-12 09:31:09', '198 Scott Terrace', 19, '2023-06-16 12:22:54', '2023-06-16 12:22:54', 1);
 INSERT INTO `temporary_residences` VALUES (7, '2022-11-23 09:11:16', '2024-10-07 17:29:44', '753 Waxwing Parkway', 16, '2023-06-16 12:22:54', '2023-06-16 12:22:54', 1);
-INSERT INTO `temporary_residences` VALUES (10, '2023-06-13 00:00:00', '2023-06-06 00:00:00', 'nhà đào bô', 5, '2023-06-30 23:45:38', '2023-06-30 23:45:38', 0);
 
 -- ----------------------------
 -- Table structure for users

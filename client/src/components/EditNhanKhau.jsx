@@ -1,14 +1,9 @@
 import {useNavigate, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {
-    Card,
-    Input,
-    Checkbox,
-    Button,
-    Typography, Select, Option,
-} from "@material-tailwind/react";
+import {Button, Card, Checkbox, Input, Typography,} from "@material-tailwind/react";
 import {InformationCircleIcon} from "@heroicons/react/24/solid";
 import axios from "axios";
+import {toast} from "react-toastify";
 
 
 const PERSON_URL = "http://localhost:8080/api/person";
@@ -50,8 +45,10 @@ export default function EditNhanKhau() {
         // console.log(info)
         try {
             const response = await axios.put(`http://localhost:8080/api/person/${id}`, data);
+            toast.success("Sửa thông tin thành công");
         } catch (error) {
             console.log(error);
+            toast.error("Sửa thông tin thất bại")
         }
     };
     return (

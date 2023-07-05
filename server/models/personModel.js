@@ -29,8 +29,17 @@ module.exports = (sequelize, DataTypes) => {
         },
         RelationshipWithHouseholder: {
             type: DataTypes.STRING
+        },
+        CCCD: {
+            type: DataTypes.STRING
+        },
+        Gender: {
+            type: DataTypes.STRING
+        },
+        Info: {
+            type: DataTypes.STRING
         }
-    
+
     })
 
     return Person

@@ -1,7 +1,7 @@
 import { Button, Card, Typography } from "@material-tailwind/react";
-import {useContext, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
-import {SearchContext} from "../Context/SearchContext.jsx";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { SearchContext } from "../Context/SearchContext.jsx";
 
 const PERSON_URL = "http://localhost:8080/api/person";
 
@@ -9,9 +9,10 @@ const TABLE_HEAD = [
   "Chủ hộ",
   "Tên",
   "Ngày sinh",
+  "Giới tính",
   "Nơi sinh",
   "Quan hệ với chủ hộ",
-    "Action",
+  "Căn cước công dân",
 ];
 
 const ITEMS_PER_PAGE = 6; // Number of items to display per page
@@ -23,6 +24,10 @@ function formatDate(dateString) {
 }
 
 export default function Admin() {
+  const navigate = useNavigate();
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
   const [tableData, setTableData] = useState([]);
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -94,12 +99,18 @@ export default function Admin() {
                   Name,
                   Birthday,
                   IsHouseholder,
+                  Gender,
                   PreviousResidencyAddress,
+                  CCCD,
                   RelationshipWithHouseholder,
                 },
                 index
               ) => (
-                <tr key={id} className="even:bg-blue-gray-50/50">
+                <tr
+                  key={id}
+                  className="even:bg-blue-gray-50/50 hover:bg-blue-gray-50 cursor-pointer"
+                  onClick={() => navigate(`/nhankhau/view/${id}`)}
+                >
                   <td className="p-4">
                     <Typography
                       variant="small"
@@ -129,6 +140,15 @@ export default function Admin() {
                   </td>
                   <td className="p-4">
                     <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                    >
+                      {Gender === "F" ? "Nữ" : "Nam"}
+                    </Typography>
+                  </td>
+                  <td className="p-4">
+                    <Typography
                       variant="small"
                       color="blue-gray"
                       className="font-normal"
@@ -145,12 +165,15 @@ export default function Admin() {
                       {RelationshipWithHouseholder}
                     </Typography>
                   </td>
-                  <Link to={`/hokhau/edit/`+ id}>
-                  <Button size="sm" className="bg-green-500 text-black m-2">Sửa</Button>
-                  </Link>
-                  <Link to={`/hokhau/view/`+ id}>
-                  <Button size="sm" className="bg-yellow-400 text-black m-2">Xem</Button>
-                  </Link>
+                  <td className="p-4">
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {CCCD}
+                    </Typography>
+                  </td>
                 </tr>
               )
             )}
@@ -166,13 +189,9 @@ export default function Admin() {
         >
           Trước
         </Button>
-          <Typography
-            variant="small"
-            color="blue-gray"
-            className="font-normal"
-          >
-            {`Trang ${currentPage} trên ${totalPages}`}
-          </Typography>
+        <Typography variant="small" color="blue-gray" className="font-normal">
+          {`Trang ${currentPage} trên ${totalPages}`}
+        </Typography>
         <Button
           onClick={goToNextPage}
           disabled={currentPage === totalPages}

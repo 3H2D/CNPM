@@ -8,6 +8,7 @@ const addTemporaryResidence = async(req, res) => {
         StartDate: req.body.StartDate,
         EndDate: req.body.EndDate,
         PreviousResidenceAddress: req.body.PreviousResidenceAddress,
+        check: req.body.check,
     }
 
     try {

@@ -18,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
         Reason: {
             type: DataTypes.STRING,
         },
+        check: {
+            type: DataTypes.INTEGER,
+        }
     
     })
 

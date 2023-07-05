@@ -1,4 +1,5 @@
 const db = require("../models");
+const { Op } = require("sequelize");
 
 const Person = db.person
 
@@ -12,7 +13,10 @@ const addPerson = async(req, res) => {
         PreviousResidencyAddress: req.body.PreviousResidencyAddress,
         IsHouseholder: req.body.IsHouseholder,
         RelationshipWithHouseholder: req.body.RelationshipWithHouseholder,
-        householdId: req.body.householdId
+        householdId: req.body.householdId,
+        CCCD: req.body.CCCD,
+        Gender: req.body.Gender,
+        Info: req.body.Info,
     }
 
     try {
@@ -27,6 +31,33 @@ const addPerson = async(req, res) => {
 const getPerson = async (req, res) => {
     let person = await Person.findAll({})
     res.status(200).send(person)
+}
+
+const getPersonById = async (req, res) => {
+    let id = req.params.id
+
+    const person = await Person.findAll({where: {id: id}})
+    res.status(200).send(person)
+}
+
+const getHouseholderByMemberId = async (req, res) => {
+    let personId = req.params.id
+
+    const member = await Person.findOne({where: {id: personId}, attributes: ['householdId']})
+
+    const householder = await Person.findOne({where: {householdId: member.dataValues.householdId, IsHouseholder: true}})
+
+    res.status(200).send(householder)
+}
+
+const getHouseholdMemberListByMemberId = async (req, res) => {
+    let personId = req.params.id
+
+    const member = await Person.findOne({where: {id: personId}, attributes: ['householdId']})
+
+    const memberList = await Person.findAll({where: {householdId: member.dataValues.householdId}})
+
+    res.status(200).send(memberList);
 }
 
 const updatePerson = async (req, res) => {
@@ -46,6 +77,9 @@ const deletePerson = async (req, res) => {
 module.exports = {
     addPerson,
     getPerson,
+    getPersonById,
+    getHouseholderByMemberId,
+    getHouseholdMemberListByMemberId,
     updatePerson,
     deletePerson
 }
